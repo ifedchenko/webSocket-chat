@@ -1,0 +1,16 @@
+{
+  "name": "web-socket-chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ifedchenko/webSocket-chat.git",
+  "author": "Yriy Fedchenko <y.fedchenko@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./app.js",
+    "start:dev": "nodemon ./app.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.1",
+    "ws": "^8.14.2"
+  }
+}
