@@ -18,7 +18,7 @@ function App() {
         const newMessage = {
           id: nanoid(),
           type: "user",
-          message: message.message,
+          message,
         };
         return [newMessage, ...prevMessages];
       });
@@ -29,16 +29,12 @@ function App() {
     setNickname(name);
   };
 
-  // const addMessage = (message) => {
-  //   setMessages([message, ...messages]);
-  // };
-
   const addMessage = (message) => {
     setMessages((prevMessages) => {
       const newMessage = {
         id: nanoid(),
         type: "you",
-        message: message.message,
+        message,
       };
       return [newMessage, ...prevMessages];
     });
@@ -50,7 +46,7 @@ function App() {
       {!nickname && <SignInChatForm onSubmit={addNickname} />}
       {nickname && (
         <div>
-          <ChatForm onSubmit={addMessage} />
+          <ChatForm addMessage={addMessage} />
           <Chat items={messages} />
         </div>
       )}

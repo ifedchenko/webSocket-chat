@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import css from "./ChatForm.module.css";
 
-const ChatForm = ({ onSubmit }) => {
-  const [state, setState] = useState({ message: "" });
+const ChatForm = ({ addMessage }) => {
+  const [message, setMessage] = useState("");
 
-  const handleMessageChange = ({ target }) => {
-    const { name, value } = target;
-    if (value.trim() !== "") {
-      setState((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
+  const handleMessageChange = ({ target: { value } }) => {
+    const messageValue = value.trim();
+    if (messageValue === "") {
+      return;
     }
+    setMessage(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...state });
-    setState({ message: "" });
+    addMessage(message);
+    setMessage("");
   };
 
   return (
@@ -26,8 +24,7 @@ const ChatForm = ({ onSubmit }) => {
         className={css.messageInput}
         type="text"
         placeholder="Enter your message"
-        value={state.message}
-        name="message"
+        value={message}
         onChange={handleMessageChange}
         required
       />
