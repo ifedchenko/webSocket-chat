@@ -1,0 +1,8 @@
+.email {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+.emailInput {
+  margin-right: 10px;
+}
